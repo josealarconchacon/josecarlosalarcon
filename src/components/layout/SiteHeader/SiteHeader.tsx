@@ -1,5 +1,6 @@
 'use client';
 
+import { useMemo } from 'react';
 import { useActiveSection } from '@/hooks/useActiveSection';
 import { cn } from '@/lib/cn';
 import type { NavItem, SiteConfig } from '@/types/content';
@@ -11,7 +12,8 @@ interface SiteHeaderProps {
 }
 
 export function SiteHeader({ site, navItems }: SiteHeaderProps) {
-  const activeId = useActiveSection(navItems.map((item) => item.sectionId));
+  const sectionIds = useMemo(() => navItems.map((item) => item.sectionId), [navItems]);
+  const activeId = useActiveSection(sectionIds);
 
   return (
     <header className={styles.header}>
