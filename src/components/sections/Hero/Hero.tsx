@@ -44,6 +44,7 @@ export function Hero({ site }: HeroProps) {
           className={styles.portrait}
           sizes="(max-width: 860px) 90vw, 400px"
           placeholder="blur"
+          loading="eager"
           fetchPriority="high"
         />
       </div>
