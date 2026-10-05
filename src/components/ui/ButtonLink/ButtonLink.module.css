@@ -1,0 +1,33 @@
+.button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 48px;
+  padding-inline: 26px;
+  border-radius: var(--radius-pill);
+  font-weight: 500;
+  text-decoration: none;
+  transition:
+    background-color 150ms ease,
+    border-color 150ms ease;
+}
+
+.primary {
+  background: var(--color-ink);
+  color: var(--color-paper);
+}
+
+.primary:hover {
+  background: var(--color-accent);
+  color: var(--color-paper);
+}
+
+.secondary {
+  border: 1px solid var(--color-border-strong);
+  color: var(--color-ink);
+}
+
+.secondary:hover {
+  border-color: var(--color-ink);
+  color: var(--color-ink);
+}
