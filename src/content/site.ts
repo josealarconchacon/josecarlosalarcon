@@ -13,8 +13,8 @@ export const siteConfig: SiteConfig = {
   email: 'jose.alarcon.chacon@gmail.com',
   links: {
     github: 'https://github.com/josealarconchacon',
-    linkedin: undefined, // add my LinkedIn
-    resume: undefined, // add my resume as /public/resume.pdf
+    linkedin: 'https://www.linkedin.com/in/jose-alarcon-chacon/',
+    resume: '/resume.pdf',
   },
 };
 
