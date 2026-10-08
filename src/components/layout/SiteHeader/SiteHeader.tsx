@@ -7,7 +7,7 @@ import type { NavItem, SiteConfig } from '@/types/content';
 import styles from './SiteHeader.module.css';
 
 interface SiteHeaderProps {
-  site: Pick<SiteConfig, 'name' | 'initials'>;
+  site: Pick<SiteConfig, 'name' | 'initials' | 'links'>;
   navItems: readonly NavItem[];
 }
 
@@ -40,6 +40,19 @@ export function SiteHeader({ site, navItems }: SiteHeaderProps) {
               </li>
             );
           })}
+          {site.links.resume && (
+            <li>
+              <a
+                href={site.links.resume}
+                className={styles.link}
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                Résumé<span className="visually-hidden"> (opens in a new tab)</span>
+              </a>
+            </li>
+          )}
+
           <li>
             <a href="#contact" className={styles.cta}>
               Contact
