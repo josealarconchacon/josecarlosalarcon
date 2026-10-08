@@ -24,6 +24,10 @@
   text-decoration: none;
 }
 
+.brand:hover {
+  color: var(--color-ink);
+}
+
 .monogram {
   display: grid;
   place-items: center;
@@ -63,6 +67,10 @@
     box-shadow 150ms ease;
 }
 
+.link:not(.active):hover {
+  color: var(--color-ink);
+}
+
 .active {
   color: var(--color-accent);
   font-weight: 600;
@@ -81,7 +89,7 @@
 }
 
 .cta:hover {
-  background: var(--color-accent);
+  background: var(--color-slate);
   color: var(--color-paper);
 }
 

@@ -48,7 +48,7 @@ export function SiteHeader({ site, navItems }: SiteHeaderProps) {
                 target="_blank"
                 rel="noopener noreferrer"
               >
-                Résumé<span className="visually-hidden"> (opens in a new tab)</span>
+                Resume<span className="visually-hidden"> (opens in a new tab)</span>
               </a>
             </li>
           )}
