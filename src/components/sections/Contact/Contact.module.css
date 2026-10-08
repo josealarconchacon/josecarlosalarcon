@@ -40,10 +40,11 @@
   font-size: 1.25rem;
   font-weight: 500;
   overflow-wrap: anywhere;
+  text-decoration: none;
 }
 
 .email:hover {
-  color: var(--color-accent-on-dark);
+  color: var(--color-on-dark-muted);
 }
 
 .copyButton {
@@ -60,8 +61,8 @@
 }
 
 .copyButton:hover {
-  border-color: var(--color-accent-on-dark);
-  background: var(--color-accent-on-dark);
+  background: transparent;
+  color: var(--color-paper);
 }
 
 .links {
@@ -75,9 +76,21 @@
 }
 
 .links a {
-  display: inline-block;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
   padding-block: 12px;
-  color: var(--color-accent-on-dark);
+  color: var(--color-on-dark-muted);
+  text-decoration: none;
+}
+
+.linkIcon {
+  flex: none;
+  width: 18px;
+  height: 18px;
+  background-color: currentColor;
+  mask: center / contain no-repeat;
+  -webkit-mask: center / contain no-repeat;
 }
 
 .links a:hover {

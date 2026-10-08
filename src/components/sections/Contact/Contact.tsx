@@ -1,3 +1,7 @@
+import type { StaticImageData } from 'next/image';
+import githubIcon from '@/assets/icons/github.svg';
+import linkedinIcon from '@/assets/icons/linkedin.svg';
+import resumeIcon from '@/assets/icons/resume.svg';
 import { cn } from '@/lib/cn';
 import type { SiteConfig } from '@/types/content';
 import { CopyEmailButton } from './CopyEmailButton';
@@ -7,13 +11,19 @@ interface ContactProps {
   site: SiteConfig;
 }
 
+interface SocialLink {
+  label: string;
+  href: string;
+  icon: StaticImageData;
+}
+
 export function Contact({ site }: ContactProps) {
   const { email, links } = site;
   const socialLinks = [
-    { label: 'GitHub', href: links.github },
-    { label: 'LinkedIn', href: links.linkedin },
-    { label: 'Résumé', href: links.resume },
-  ].filter((link): link is { label: string; href: string } => Boolean(link.href));
+    { label: 'GitHub', href: links.github, icon: githubIcon },
+    { label: 'LinkedIn', href: links.linkedin, icon: linkedinIcon },
+    { label: 'Resume', href: links.resume, icon: resumeIcon },
+  ].filter((link): link is SocialLink => Boolean(link.href));
 
   return (
     <footer id="contact" aria-labelledby="contact-heading" className={styles.contact}>
@@ -31,16 +41,30 @@ export function Contact({ site }: ContactProps) {
         </div>
 
         <ul className={styles.links}>
-          {socialLinks.map(({ label, href }) => {
-            const isExternal = href.startsWith('http');
+          {socialLinks.map(({ label, href, icon }) => {
+            const opensNewTab = href.startsWith('http') || href.endsWith('.pdf');
             return (
               <li key={label}>
                 <a
                   href={href}
-                  {...(isExternal ? { target: '_blank', rel: 'noopener noreferrer' } : {})}
+                  {...(opensNewTab ? { target: '_blank', rel: 'noopener noreferrer' } : {})}
                 >
-                  {label}
-                  {isExternal && <span className="visually-hidden"> (opens in a new tab)</span>} ↗
+                  {/* The SVG is used as a mask so the icon takes the link's text color. */}
+                  <span
+                    className={styles.linkIcon}
+                    style={{
+                      maskImage: `url(${icon.src})`,
+                      WebkitMaskImage: `url(${icon.src})`,
+                    }}
+                    aria-hidden="true"
+                  />
+                  <span>
+                    {label}
+                    {opensNewTab && (
+                      <span className="visually-hidden"> (opens in a new tab)</span>
+                    )}{' '}
+                    ↗
+                  </span>
                 </a>
               </li>
             );
