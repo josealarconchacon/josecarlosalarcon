@@ -24,7 +24,7 @@ export function Hero({ site }: HeroProps) {
         </h1>
         <p className={styles.lede}>
           Computer Science student at Hunter College and former Software Engineering Apprentice at
-          Wells Fargo. I care about software that real people use — like Oxalate, a live app I built
+          Wells Fargo. I care about software that real people use, like Oxalate, a live app I built
           and still support.
         </p>
         <div className={styles.actions}>
