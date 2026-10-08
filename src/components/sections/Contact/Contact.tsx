@@ -28,48 +28,56 @@ export function Contact({ site }: ContactProps) {
   return (
     <footer id="contact" aria-labelledby="contact-heading" className={styles.contact}>
       <div className={cn('container', styles.inner)}>
-        <p className={styles.eyebrow}>Contact</p>
-        <h2 id="contact-heading" className={styles.title}>
-          Hiring a junior engineer? I would love to talk.
-        </h2>
+        <div className={styles.main}>
+          <div className={styles.intro}>
+            <p className={styles.eyebrow}>Contact</p>
+            <h2 id="contact-heading" className={styles.title}>
+              Hiring a junior engineer? I would love to talk.
+            </h2>
+          </div>
 
-        <div className={styles.emailRow}>
-          <a href={`mailto:${email}`} className={styles.email}>
-            {email}
-          </a>
-          <CopyEmailButton email={email} />
+          <div className={styles.aside}>
+            <div className={styles.emailRow}>
+              <a href={`mailto:${email}`} className={styles.email}>
+                {email}
+              </a>
+              <CopyEmailButton email={email} />
+            </div>
+
+            <ul className={styles.links}>
+              {socialLinks.map(({ label, href, icon }) => {
+                const opensNewTab = href.startsWith('http') || href.endsWith('.pdf');
+                return (
+                  <li key={label}>
+                    <a
+                      href={href}
+                      {...(opensNewTab ? { target: '_blank', rel: 'noopener noreferrer' } : {})}
+                    >
+                      {/* The SVG is used as a mask so the icon takes the link's text color. */}
+                      <span
+                        className={styles.linkIcon}
+                        style={{
+                          maskImage: `url(${icon.src})`,
+                          WebkitMaskImage: `url(${icon.src})`,
+                        }}
+                        aria-hidden="true"
+                      />
+                      <span className={styles.linkLabel}>
+                        {label}
+                        {opensNewTab && (
+                          <span className="visually-hidden"> (opens in a new tab)</span>
+                        )}
+                      </span>
+                      <span className={styles.linkArrow} aria-hidden="true">
+                        ↗
+                      </span>
+                    </a>
+                  </li>
+                );
+              })}
+            </ul>
+          </div>
         </div>
-
-        <ul className={styles.links}>
-          {socialLinks.map(({ label, href, icon }) => {
-            const opensNewTab = href.startsWith('http') || href.endsWith('.pdf');
-            return (
-              <li key={label}>
-                <a
-                  href={href}
-                  {...(opensNewTab ? { target: '_blank', rel: 'noopener noreferrer' } : {})}
-                >
-                  {/* The SVG is used as a mask so the icon takes the link's text color. */}
-                  <span
-                    className={styles.linkIcon}
-                    style={{
-                      maskImage: `url(${icon.src})`,
-                      WebkitMaskImage: `url(${icon.src})`,
-                    }}
-                    aria-hidden="true"
-                  />
-                  <span>
-                    {label}
-                    {opensNewTab && (
-                      <span className="visually-hidden"> (opens in a new tab)</span>
-                    )}{' '}
-                    ↗
-                  </span>
-                </a>
-              </li>
-            );
-          })}
-        </ul>
 
         <div className={styles.bottom}>
           <p>
