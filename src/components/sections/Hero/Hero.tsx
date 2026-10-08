@@ -24,14 +24,13 @@ export function Hero({ site }: HeroProps) {
         </h1>
         <p className={styles.lede}>
           Computer Science student at Hunter College and former Software Engineering Apprentice at
-          Wells Fargo. I care about software that real people use, like Oxalate, a live app I built
-          and still support.
+          Wells Fargo.
         </p>
         <div className={styles.actions}>
           <ButtonLink href="#projects">See my projects</ButtonLink>
           {site.links.resume && (
             <ButtonLink href={site.links.resume} variant="secondary" download>
-              Download résumé
+              Download resume
             </ButtonLink>
           )}
         </div>
