@@ -51,7 +51,6 @@ export function Contact({ site }: ContactProps) {
           <p>
             © {new Date().getFullYear()} {site.name}
           </p>
-          <p>Jose Alarcon</p>
         </div>
       </div>
     </footer>
